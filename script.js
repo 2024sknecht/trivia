@@ -156,13 +156,22 @@ function resetScore() {
 	updateScoreDisplay();
 }
 
+function updateSelectedCategory() {
+	const sel = $('#category');
+	const el = $('#selected-category');
+	if (!el || !sel) return;
+	const text = sel.selectedOptions && sel.selectedOptions.length ? sel.selectedOptions[0].textContent : (sel.options[sel.selectedIndex] && sel.options[sel.selectedIndex].text) || 'Any';
+	el.textContent = `Category: ${text}`;
+}
+
 async function loadAndShow() {
 	const amount = Math.max(1, Math.min(50, Number($('#amount').value) || 5));
 	const qtype = $('#type') ? $('#type').value : 'any';
+	const qcategory = $('#category') ? $('#category').value : 'any';
 	const status = $('#status');
 	status.textContent = 'Loading...';
 	try {
-		const items = await fetchTrivia(amount, qtype);
+		const items = await fetchTrivia(amount, qtype, qcategory);
 		renderTrivia(items);
 		status.textContent = `Loaded ${items.length} questions.`;
 	} catch (err) {
@@ -185,6 +194,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			opt.textContent = c.name;
 			sel.appendChild(opt);
 		});
+		// update visible label and listen for changes
+		updateSelectedCategory();
+		sel.addEventListener('change', updateSelectedCategory);
 	});
 	$('#reset-score').addEventListener('click', resetScore);
 	updateScoreDisplay();
