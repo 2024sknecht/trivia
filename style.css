@@ -1,0 +1,28 @@
+/* Basic styling for the trivia app */
+html,body{height:100%;}
+body{
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin:0; background:#f7fafc; color:#0f172a; display:flex; align-items:flex-start; justify-content:center;
+}
+main{width:min(900px,95%); margin:48px 0; background:#fff; padding:20px 24px; border-radius:8px; box-shadow:0 6px 18px rgba(8,17,34,0.06);} 
+h1{margin:0 0 12px 0; font-size:1.4rem}
+#controls{display:flex; gap:8px; align-items:center; margin-bottom:12px; flex-wrap:wrap}
+label{font-size:0.9rem}
+input[type=number], select{padding:6px 8px; border-radius:6px; border:1px solid #d1d5db}
+button{background:#0369a1; color:#fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer}
+button:hover{opacity:0.95}
+#status{margin-bottom:8px; color:#374151}
+#trivia-list{list-style:none; padding:0; margin:0}
+#trivia-list > li{padding:12px; border-radius:6px; border:1px solid #eef2f7; margin-bottom:10px;}
+.question{font-weight:600; margin-bottom:8px}
+.answers{list-style:decimal inside; padding-left:0; margin:0}
+.answers li{cursor:pointer; padding:8px; margin:6px 0; border-radius:6px; border:1px solid transparent; transition:all .12s; background:#ffffff}
+.answers li:hover{transform:translateY(-1px); box-shadow:0 1px 2px rgba(2,6,23,0.06)}
+.answers.disabled li{pointer-events:none; opacity:0.85}
+.answers li.correct{background:#d1fae5; border-color:#10b981; color:#064e3b}
+.answers li.wrong{background:#fee2e2; border-color:#ef4444; color:#7f1d1d}
+.meta{font-size:0.85rem; color:#6b7280; margin-top:6px}
+
+@media (max-width:520px){
+  .question{font-size:0.95rem}
+}
