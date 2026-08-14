@@ -20,8 +20,25 @@
           <option value="multiple" selected>Multiple Choice</option>
           <option value="boolean">True / False</option>
         </select>
+        
+        <label for="category">Category:</label>
+        <select id="category">
+          <option value="any">Any Category</option>
+        </select>
 
         <button id="load-btn">Load Trivia</button>
+      </div>
+
+      <div id="score-container">
+        <div id="score">Score: 0 / 0</div>
+        <button id="reset-score">Reset Score</button>
+      </div>
+
+      <div id="status" aria-live="polite"></div>
+
+      <div id="progress-wrap">
+        <div id="progress-text">Progress: 0 / 0</div>
+        <div id="progress"><div id="progress-bar" style="width:0%"></div></div>
       </div>
 
       <div id="status" aria-live="polite"></div>
